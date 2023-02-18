@@ -3,6 +3,7 @@
 require_relative 'cuid2/version'
 require 'digest'
 
+# CUID2 is a Ruby implementation of the CUID2 algorithm.
 module Cuid2
   # Entropy is a class that generates a random string of characters
   class Entropy
@@ -37,19 +38,16 @@ module Cuid2
     end
   end
 
-  # Generate is a class that generates a Cuid2
-  class Generate
-    DEFAULT_LENGTH = 24
+  DEFAULT_LENGTH = 24
 
-    def self.call
-      new.generate
-    end
-
-    def generate(length = DEFAULT_LENGTH)
+  class << self
+    def call(length = DEFAULT_LENGTH)
       hash_input = (time + Entropy.create(length) + count + fingerprint).to_s
 
       "#{random_letter}#{Cuid2::Hash.create(hash_input, length)[2..length]}"
     end
+
+    alias generate call
 
     private
 

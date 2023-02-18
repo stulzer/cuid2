@@ -5,7 +5,7 @@ require 'cuid2'
 COLISION_TEST_RUN = ENV.fetch('COLISION_TEST_RUN', 10).to_i
 CUIDS_PER_RUN = ENV.fetch('CUIDS_PER_RUN', 100).to_i
 
-RSpec.describe Cuid2::Generate do
+RSpec.describe Cuid2 do
   it 'has a version number' do
     expect(Cuid2::VERSION).not_to be nil
   end
@@ -15,7 +15,7 @@ RSpec.describe Cuid2::Generate do
 
     COLISION_TEST_RUN.times do
       CUIDS_PER_RUN.times do
-        cuids << Cuid2::Generate.call
+        cuids << Cuid2.call
       end
     end
 

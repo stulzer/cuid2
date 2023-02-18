@@ -16,6 +16,25 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
     $ gem install cuid2
 
+## Usage
+
+First require it.
+
+```ruby
+require 'cuid2'
+```
+
+Generate a Cuid2 with call.
+
+```
+Cuid2.generate
+=> "zw881lkfxx644yknviucss31"
+Cuid2.call
+=> "yra4dr2qteivp6kkur89gd11"
+Cuid2.()
+=> "cr6x94qpqagcgbay780xifun"
+```
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/stulzer/cuid2. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/stulzer/cuid2/blob/main/CODE_OF_CONDUCT.md).

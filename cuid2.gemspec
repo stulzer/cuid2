@@ -9,13 +9,13 @@ Gem::Specification.new do |spec|
   spec.email = ['rubens.stulzer@gmail.com']
 
   spec.summary = 'Cuid2 is a Ruby implementation of the Cuid2 algorithm by Eric Elliott.'
-  spec.description = 'Secure, collision-resistant ids optimized for horizontal scaling and performance.\
-  Next generation UUIDs. Need unique ids in your app? Forget UUIDs which often collide in large apps.\
-  Use Cuid2, instead.'
+  spec.description = 'Secure, collision-resistant ids optimized for horizontal scaling and performance.' \
+  'Next generation UUIDs. Need unique ids in your app? Forget UUIDs which often collide in large apps.' \
+  'Use Cuid2, instead.'
   spec.license = 'MIT'
 
   spec.homepage = 'https://github.com/stulzer/cuid2'
-  spec.required_ruby_version = '>= 2.6.0'
+  spec.required_ruby_version = '>= 3.2.0'
 
   spec.metadata['homepage_uri'] = spec.homepage
   spec.metadata['source_code_uri'] = 'https://github.com/stulzer/cuid2'
