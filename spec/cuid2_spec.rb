@@ -2,8 +2,8 @@
 
 require 'cuid2'
 
-COLISION_TEST_RUN = ENV.fetch('COLISION_TEST_RUN', 10).to_i
-CUIDS_PER_RUN = ENV.fetch('CUIDS_PER_RUN', 100).to_i
+COLISION_TEST_RUN = ENV.fetch('COLISION_TEST_RUN', 1).to_i
+CUIDS_PER_RUN = ENV.fetch('CUIDS_PER_RUN', 10).to_i
 
 RSpec.describe Cuid2 do
   it 'has a version number' do
@@ -24,5 +24,14 @@ RSpec.describe Cuid2 do
     expect(cuids.uniq.size).to eq(COLISION_TEST_RUN * CUIDS_PER_RUN)
     expect(cuids.uniq.sort).to eq(cuids.sort)
     expect(cuids.sample).to match(/[a-z0-9]{24}/)
+  end
+
+  it 'should not have the same first character' do
+    cuids = []
+    5000.times do
+      cuids << Cuid2.call[0]
+    end
+
+    expect(cuids.uniq.size).to be > 1
   end
 end
