@@ -42,6 +42,7 @@ module Cuid2
 
   class << self
     def call(length = DEFAULT_LENGTH)
+      random_letter = ('a'..'z').to_a[(rand * 26).floor]
       hash_input = (time + Entropy.create(length) + count + fingerprint).to_s
 
       "#{random_letter}#{Cuid2::Hash.create(hash_input, length)[2..length]}"
@@ -65,10 +66,6 @@ module Cuid2
 
     def counter
       (rand + 1) * 2057
-    end
-
-    def random_letter
-      ('a'..'z').to_a[(random * 26).floor]
     end
 
     def fingerprint
