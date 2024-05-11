@@ -13,7 +13,7 @@ module Cuid2
       entropy = ''
 
       while entropy.length < length
-        random_prime = PRIMES[(rand * PRIMES.size).floor]
+        random_prime = PRIMES.sample
         entropy += (rand * random_prime).floor.to_s(36)
       end
 
@@ -42,7 +42,7 @@ module Cuid2
 
   class << self
     def call(length = DEFAULT_LENGTH)
-      random_letter = ('a'..'z').to_a[(rand * 26).floor]
+      random_letter = ('a'..'z').to_a.sample
       hash_input = (time + Entropy.create(length) + count + fingerprint).to_s
 
       "#{random_letter}#{Cuid2::Hash.create(hash_input, length)[2..length]}"
